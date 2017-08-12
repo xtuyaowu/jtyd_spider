@@ -17,12 +17,13 @@ class Dazdp(scrapy.Spider):
     rotete_user_agent = True
 
     def __init__(self):
-        start_urls = [
-            'http://www.dianping.com/search/category/1/10'
-            # 'http://www.dianping.com/search/category/1/10'
-            # 'http://www.dianping.com/search/category/1/10/g3243r9'
-            # 'http://www.dianping.com/search/category/1/10/g109r5938'
-        ]
+        # start_urls = [
+        #     'http://www.dianping.com/search/category/1/10'
+        #     # 'http://www.dianping.com/search/category/1/10'
+        #     # 'http://www.dianping.com/search/category/1/10/g3243r9'
+        #     # 'http://www.dianping.com/search/category/1/10/g109r5938'
+        #     #http://www.dianping.com/search/category/7/10/g117
+        # ]
         self.location = [
                     'r5', 'r2', 'r6', 'r1', 'r3', 'r4', 'r12', 'r10', 'r7', 'r9', 'r13', 'r8', 'r5937', 'r5938',
                     'r5939', 'r8846', 'r8847', 'c3580', 'r801', 'r802', 'r804', 'r865', 'r860', 'r803', 'r835', 'r812',
@@ -40,11 +41,11 @@ class Dazdp(scrapy.Spider):
     ##    2.1  抓取这个页面有多少 分页 数据
     ##    2.2
     def start_requests(self):
-        url = 'http://www.dianping.com/search/category/1/10'
-        for lbs in self.location:
+        url = 'http://www.dianping.com/search/category/{0}/10/{1}'
+        for i in range(1,2501):
             for ft in self.foodtype:
-                url = 'http://www.dianping.com/search/category/1/10/%s%s' % (lbs, ft)
-                yield scrapy.Request(url,callback=self.parse_list_first)
+                new_url = url.format(i,ft)
+                yield scrapy.Request(new_url,callback=self.parse_list_first)
 
     def parse_list_first(self, response):
         selector = scrapy.Selector(response)
@@ -62,6 +63,7 @@ class Dazdp(scrapy.Spider):
 
     def parse_list(self, response):
         item = DianpingItem()
+        location=response.css('a.city.J-city::text').extract_first()
         selector = scrapy.Selector(response)
         div = selector.xpath('//div[@id="shop-all-list"]/ul/li')
         for dd in div:
@@ -113,7 +115,7 @@ class Dazdp(scrapy.Spider):
             item['loc'] = locs[0]
 
             item['item_name'] = 'shop'
-            item['location'] = '上海'
+            item['location'] = location
             yield item
 
 
