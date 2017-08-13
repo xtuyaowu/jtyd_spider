@@ -5,7 +5,7 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-from random import choice, random
+import random
 
 from scrapy import signals
 from scrapy.exceptions import NotConfigured
@@ -19,7 +19,7 @@ from selenium.webdriver import DesiredCapabilities
 
 class JavaScriptMiddleware(object):
     def process_request(self, request, spider):
-        if spider.name == "jd":
+        if spider.name == "dazdp_detail":
             print("PhantomJS is starting...")
             # driver = webdriver.PhantomJS() #指定使用的浏览器
             # # driver = webdriver.Firefox()
@@ -72,9 +72,9 @@ class JavaScriptMiddleware(object):
                 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36'
             ]
             desired_capabilities = dict()
-            user_agents = random.choice(user_agents)
+            user_agent = random.choice(user_agents)
             desired_capabilities[
-                'phantomjs.page.settings.userAgent'] = user_agents
+                'phantomjs.page.settings.userAgent'] = user_agent
             service_args = list()
             # if not load_images:
             #     service_args += ['--load-images=false']

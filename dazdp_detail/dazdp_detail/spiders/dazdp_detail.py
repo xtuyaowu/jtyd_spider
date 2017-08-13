@@ -194,11 +194,11 @@ class Dazdp(scrapy.Spider):
                 dzcount = dzcountlist[0].text.replace(' ', '')
 
             # 获取推荐菜
-            food_list = soup.find_all("p", class_="recommend-name")
+            food_list = soup.select('#shop-tabs > div.shop-tab-recommend.J-panel > p > a')
             # print(type(food_list))
             recommend_food = ''  # 推荐菜
             for ele in food_list:
-                recommend_food = ele.get_text().replace(' ', '')
+                recommend_food = (recommend_food + ele.get_text().replace(' ', '') + ' ')
 
             # 获取团购活动和促销活动
             chuxiao = ''

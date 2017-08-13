@@ -79,7 +79,7 @@ ITEM_PIPELINES = {
 MONGODB_SERVER = "202.197.237.29"
 MONGODB_PORT = 28018
 MONGODB_USER_NAME = "jtyd_mdb"
-MONGODB_SERVER_PASSWORD= "fdsfsa&fdjflsa(*ddfs"
+MONGODB_SERVER_PASSWORD= "fdsfsaddfs"
 MONGODB_DB = "jtyd"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
