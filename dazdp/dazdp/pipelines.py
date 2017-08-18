@@ -15,9 +15,8 @@ from scrapy.exceptions import DropItem
 class MongoDBPipeline(object):
     def __init__(self):
         connection = pymongo.MongoClient(
-            settings['MONGODB_SERVER'],
-            settings['MONGODB_PORT']
-        )
+            'mongodb://' + settings['MONGODB_USER_NAME'] + ':' + settings['MONGODB_SERVER_PASSWORD'] + '@' + settings[
+                'MONGODB_SERVER'] + ':' + str(settings['MONGODB_PORT']) + '/' + settings['MONGODB_DB'])
         self.db = connection[settings['MONGODB_DB']]
 
     def process_item(self, item, spider):

@@ -75,10 +75,11 @@ ITEM_PIPELINES = {
     'dazdp.pipelines.MongoDBPipeline': 300,
     'scrapy_redis.pipelines.RedisPipeline': 300
 }
-MONGODB_SERVER = "192.168.1.101"
-MONGODB_PORT = 27017
-MONGODB_DB = "dazdp"
-
+MONGODB_SERVER = "202.197.237.29"
+MONGODB_PORT = 28018
+MONGODB_USER_NAME = "jtyd_mdb"
+MONGODB_SERVER_PASSWORD= "fdsfsaddfs"
+MONGODB_DB = "jtyd"
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # AUTOTHROTTLE_ENABLED = True
@@ -135,9 +136,7 @@ DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 # REDIS_URL = 'redis://user:pass@hostname:port'
 # Example of a redis_url without a user parameter:
 # REDIS_URL = "redis://:abc123@45.79.199.102:6379"
-REDIS_HOST = '192.168.1.101'
-REDIS_PORT = 6379
-
+REDIS_URL = "redis://:gsgaf$2645Dwrw@202.197.237.29:6479/1"
 # DEPTH_LIMIT = 1
 
 # STATS_CLASS = 'dazdp.statscol.graphite.RedisGraphiteStatsCollector'

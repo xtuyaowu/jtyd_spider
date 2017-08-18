@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import json
 import logging
 import random
@@ -69,7 +70,7 @@ class Dazdp(scrapy.Spider):
         for dd in div:
             shopnames = dd.xpath('div[2]/div[1]/a[1]/h4/text()').extract()
             item['shopname']=shopnames[0]
-            print(shopnames[0])
+            # print(shopnames[0])
 
             shopurls = dd.xpath('div[2]/div[1]/a[1]/@href').extract()
             item['shopurl'] = 'http://www.dianping.com'+str(shopurls[0])
