@@ -16,7 +16,7 @@ class RotateUserAgentMiddleware(object):
     """
 
     def __init__(self, user_agents):
-        self.enabled = False
+        self.enabled = True
         self.user_agents = user_agents
 
     @classmethod
