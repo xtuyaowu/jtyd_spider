@@ -17,13 +17,14 @@ NEWSPIDER_MODULE = 'dazdp.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT_CHOICES = [
-    'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
-    'Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)',
-    'Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)',
-    'DuckDuckBot/1.0; (+http://duckduckgo.com/duckduckbot.html)',
-    'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
-    'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)',
-    'ia_archiver (+http://www.alexa.com/site/help/webmasters; crawler@alexa.com)',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
+    # 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+    # 'Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+    # 'Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)',
+    # 'DuckDuckBot/1.0; (+http://duckduckgo.com/duckduckbot.html)',
+    # 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+    # 'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)',
+    # 'ia_archiver (+http://www.alexa.com/site/help/webmasters; crawler@alexa.com)',
 ]
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -40,16 +41,16 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
-
+COOKIES_ENABLED = True
 # Disable Telnet Console (enabled by default)
 # TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-# DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
+  'Cookie':'JSESSIONID=9DC602E74AE9E08278F95256EA7B89E1;'
+}
 
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
@@ -72,8 +73,8 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'dazdp.pipelines.MongoDBPipeline': 300,
-    'scrapy_redis.pipelines.RedisPipeline': 300
+    # 'dazdp.pipelines.MongoDBPipeline': 300,
+    # 'scrapy_redis.pipelines.RedisPipeline': 300
 }
 MONGODB_SERVER = "202.197.237.29"
 MONGODB_PORT = 28018
@@ -82,11 +83,11 @@ MONGODB_SERVER_PASSWORD= "fdsfsaddfs"
 MONGODB_DB = "jtyd"
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
-# AUTOTHROTTLE_ENABLED = True
+AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-# AUTOTHROTTLE_START_DELAY = 5
+AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-# AUTOTHROTTLE_MAX_DELAY = 60
+AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
 # AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
@@ -127,16 +128,16 @@ MONGODB_DB = "jtyd"
 # If proxy mode is 2 uncomment this sentence :
 # CUSTOM_PROXY = "http://host1:port"
 # Enables scheduling storing requests queue in redis.
-SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 
 # # Ensure all spiders share same duplicates filter through redis.
-DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+# DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
 # REDIS_URL = 'redis://192.168.1.112:6379'
 # REDIS_URL = 'redis://user:pass@hostname:port'
 # Example of a redis_url without a user parameter:
 # REDIS_URL = "redis://:abc123@45.79.199.102:6379"
-REDIS_URL = "redis://:gsgaf$2645Dwrw@202.197.237.29:6479/1"
+# REDIS_URL = "redis://:gsgaf$2645Dwrw@202.197.237.29:6479/1"
 # DEPTH_LIMIT = 1
 
 # STATS_CLASS = 'dazdp.statscol.graphite.RedisGraphiteStatsCollector'
